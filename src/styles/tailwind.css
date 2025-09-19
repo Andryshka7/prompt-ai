@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@screens {
+    xxs: 320px;
+    xs: 475px;
+}
+
+@theme {
+    --text-xxxs: 8px;
+    --text-xxs: 10px;
+
+    --breakpoint-xxs: 320px;
+    --breakpoint-xs: 475px;
+}

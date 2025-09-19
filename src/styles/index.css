@@ -1,0 +1,21 @@
+@import url('./tailwind.css');
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    color: white;
+    background: #0a0910;
+    color-scheme: dark;
+}
+
+button {
+    cursor: pointer;
+}
+
+input,
+textarea {
+    outline: none;
+}
