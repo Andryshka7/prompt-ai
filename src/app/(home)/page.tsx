@@ -1,5 +1,5 @@
-import { Mic, Settings } from 'lucide-react'
 import { Header, Footer } from '@/components'
+import { Input } from './components'
 
 const Home = () => {
     return (
@@ -42,33 +42,7 @@ const Home = () => {
                     </div>
 
                     {/* Input Container */}
-                    <div className='group relative'>
-                        {/* Subtle glow effect behind input */}
-                        <div className='absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-indigo-500/5 opacity-0 blur-sm transition-opacity duration-500 group-focus-within:opacity-60'></div>
-
-                        <label
-                            className='relative flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-500 focus-within:border-blue-400/70 focus-within:bg-white/8 focus-within:shadow-lg focus-within:shadow-blue-500/10 hover:bg-white/8 hover:shadow-md hover:shadow-blue-500/5'
-                            htmlFor='prompt'
-                        >
-                            {/* Settings Button */}
-                            <button className='flex h-10 w-10 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-gray-500/25'>
-                                <Settings className='h-5 w-5' />
-                            </button>
-
-                            {/* Main Input */}
-                            <input
-                                id='prompt'
-                                type='text'
-                                placeholder='Ask me anything...'
-                                className='flex-1 bg-transparent text-lg text-white placeholder-gray-400 outline-none'
-                            />
-
-                            {/* Voice Button */}
-                            <button className='flex h-10 w-10 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-gray-500/25'>
-                                <Mic className='h-5 w-5' />
-                            </button>
-                        </label>
-                    </div>
+                    <Input />
                 </div>
             </main>
 

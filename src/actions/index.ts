@@ -1,1 +1,2 @@
-const generatePrompt = async (prompt: string) => {}
+export { default as generatePrompt } from './generatePrompt'
+export { default as convertSpeechToText } from './convertSpeechToText'
