@@ -31,19 +31,8 @@ const Home = () => {
 
             <Header />
 
-            <main className='relative z-10 flex flex-1 flex-col items-center justify-center px-6'>
-                <div className='mx-auto -mt-36 w-full max-w-4xl text-center'>
-                    {/* Hero Section */}
-                    <div className='mb-12'>
-                        <h2 className='mb-4 text-3xl font-bold text-white md:text-4xl'>
-                            Ideas into Prompts
-                        </h2>
-                        <p className='text-lg text-gray-300 md:text-xl'>Write • Generate • Done</p>
-                    </div>
-
-                    {/* Input Container */}
-                    <Input />
-                </div>
+            <main className='relative z-10 flex flex-1 flex-col items-center px-6'>
+                <Input />
             </main>
 
             <Footer />

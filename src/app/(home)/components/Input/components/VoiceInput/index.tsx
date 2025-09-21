@@ -21,6 +21,7 @@ const VoiceInput = ({ onTranscript, disabled = false }: Props) => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
             const mediaRecorder = new MediaRecorder(stream)
+
             mediaRecorderRef.current = mediaRecorder
             audioChunksRef.current = []
 
@@ -34,7 +35,6 @@ const VoiceInput = ({ onTranscript, disabled = false }: Props) => {
                 const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' })
                 await transcribeAudio(audioBlob)
 
-                // Stop all tracks to release microphone
                 stream.getTracks().forEach((track) => track.stop())
             }
 

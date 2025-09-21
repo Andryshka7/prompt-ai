@@ -1,9 +1,15 @@
-interface PromptSettings {}
+import { AnswerStyleEnum, OpenAIModelEnum, PromptLengthEnum } from '@/utils'
+
+interface PromptSettings {
+    model: OpenAIModelEnum
+    length: PromptLengthEnum
+    style: AnswerStyleEnum
+}
 
 interface Prompt {
     id: string
-    from: string
-    name: string
+    content: string
+    settings: PromptSettings
     createdAt: string
 }
 

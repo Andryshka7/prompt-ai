@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-    title: 'AI Prompt Tool - Voice-Powered AI Assistant',
-    description:
-        'Generate AI prompts and get real-time responses with voice input. Clean, minimalistic interface with streaming responses from OpenAI GPT-4o.'
+    title: 'AI Prompt Tool',
+    description: 'AI Prompt Tool - Ideas into Prompts'
 }
 
 export const viewport: Viewport = {

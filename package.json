@@ -12,7 +12,12 @@
         "next": "15.5.3",
         "openai": "^5.22.0",
         "react": "19.1.0",
-        "react-dom": "19.1.0"
+        "react-dom": "19.1.0",
+        "react-markdown": "^10.1.0",
+        "rehype-highlight": "^7.0.2",
+        "remark-gfm": "^4.0.1",
+        "tailwind-scrollbar": "^4.0.2",
+        "zustand": "^5.0.8"
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4",

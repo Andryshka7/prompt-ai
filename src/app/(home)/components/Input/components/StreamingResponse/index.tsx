@@ -1,7 +1,10 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { Copy, Check, Expand, Shrink } from 'lucide-react'
+import { ExpandPromt, CopyPrompt } from './components'
+
+import { prompt } from '@/mockData'
+import { Prompt } from '@/types'
 
 interface Props {
     chunks: string[]
@@ -11,7 +14,6 @@ interface Props {
 const StreamingResponse = ({ chunks, onComplete }: Props) => {
     const [displayText, setDisplayText] = useState('')
     const [isStreaming, setIsStreaming] = useState(false)
-    const [isCopied, setIsCopied] = useState(false)
 
     const isGeneratingRef = useRef(false)
 
@@ -34,7 +36,7 @@ const StreamingResponse = ({ chunks, onComplete }: Props) => {
                     setDisplayText(fullText)
 
                     if (i < chunks.length - 1) {
-                        await new Promise((resolve) => setTimeout(resolve, 20))
+                        await new Promise((resolve) => setTimeout(resolve, 10))
                     }
                 }
 
@@ -58,17 +60,7 @@ const StreamingResponse = ({ chunks, onComplete }: Props) => {
         }
     }, [chunks])
 
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(displayText)
-            setIsCopied(true)
-            setTimeout(() => setIsCopied(false), 2000)
-        } catch (error) {
-            console.error('Failed to copy text:', error)
-        }
-    }
-
-    if (!chunks.length) return null
+    if (!chunks.length) return <div className='mt-6 w-full max-w-4xl' />
 
     return (
         <div className='mt-6 w-full max-w-4xl'>
@@ -80,31 +72,13 @@ const StreamingResponse = ({ chunks, onComplete }: Props) => {
                             {isStreaming ? 'Generating...' : 'Complete'}
                         </span>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <button
-                            onClick={handleCopy}
-                            disabled={isStreaming}
-                            className='flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-gray-500/25 disabled:pointer-events-none disabled:opacity-50'
-                            title={isCopied ? 'Copied!' : 'Copy to clipboard'}
-                        >
-                            {isCopied ? (
-                                <Check className='h-4 w-4 text-green-400' />
-                            ) : (
-                                <Copy className='h-4 w-4' />
-                            )}
-                        </button>
-                        <button
-                            onClick={() => {}}
-                            disabled={isStreaming}
-                            className='flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-gray-500/25 disabled:pointer-events-none disabled:opacity-50'
-                            title='Expand'
-                        >
-                            <Expand className='h-4 w-4' />
-                        </button>
+                    <div className='flex items-center'>
+                        <CopyPrompt prompt={prompt as Prompt} disabled={isStreaming} />
+                        <ExpandPromt prompt={prompt as Prompt} disabled={isStreaming} />
                     </div>
                 </div>
 
-                <div className='relative max-h-75 min-h-18 overflow-hidden text-white transition-all'>
+                <div className='relative max-h-75 min-h-6 overflow-y-auto text-white transition-all'>
                     <div className='text-left font-mono text-sm leading-relaxed whitespace-pre-wrap'>
                         <span className='relative'>
                             {displayText}
@@ -113,9 +87,6 @@ const StreamingResponse = ({ chunks, onComplete }: Props) => {
                             )}
                         </span>
                     </div>
-                    {displayText.length > 500 && (
-                        <div className='pointer-events-none absolute right-0 bottom-0 left-0 h-8 bg-gradient-to-t from-white/5 to-transparent' />
-                    )}
                 </div>
             </div>
         </div>
